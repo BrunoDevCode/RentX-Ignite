@@ -8,6 +8,7 @@ interface IPayload {
   sub: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export async function ensureAutheticated(
   request: Request,
   response: Response,
@@ -29,11 +30,15 @@ export async function ensureAutheticated(
 
     const usersRepository = new UsersRepository();
 
-    const user = usersRepository.findById(user_id);
+    const user = await usersRepository.findById(user_id);
 
     if (!user) {
       throw new AppError('User does not exists!', 401);
     }
+
+    request.user = {
+      id: user_id,
+    };
 
     next();
   } catch {
