@@ -9,7 +9,7 @@ interface IPayload {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export async function ensureAutheticated(
+export async function ensureAuthenticated(
   request: Request,
   response: Response,
   next: NextFunction
