@@ -4,7 +4,6 @@ services:
   database:
     image: postgres
     container_name: database_ignite
-    # restart: always
     ports:
       - 5432:5432
     environment:
@@ -19,7 +18,6 @@ services:
     container_name: rentx
     ports:
       - 3333:3333
-      #- 9229:9229 # Usar debug do VS Code
     volumes:
       - .:/usr/app
     links:
